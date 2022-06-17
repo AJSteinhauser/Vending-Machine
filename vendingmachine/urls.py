@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from homepage.views import homepage
+from login.views import signup, logout, login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("home/",  homepage, name="homepage"),
     path("",  homepage, name="homepage"),
-
+    path("signup/", signup, name="signup"),
+    path("login/", login, name='login'),
+    path("logout/", logout, name="logout")
 ]

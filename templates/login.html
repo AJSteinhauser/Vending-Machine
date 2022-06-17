@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    {% if error %}
+    <div class="d-flex justify-content-center">
+      <div class="alert alert-danger" role="alert">
+          {{error}}
+      </div>
+    </div>
+    {% endif %}
+    <div class="d-flex justify-content-center">
+        <div class="shadow-lg p-3 mb-5 card rounded jumbotron jusitfy-center" style="width: 80%; max-width: 500px">
+            <div class="d-flex justify-content-center">
+              <img src="{% static 'navlogo_centered.png' %}" class="bi me-2" height="50px" role="img" aria-label="Cola Co logo"></img>
+            </div>
+            <div class="d-flex justify-content-center" style="margin-top: .5cm;">
+              <h3 class="card-title">Login</h3>
+            </div>
+            <div class="d-flex justify-content-center">
+              <p class="text-muted">Don't have an account? <a href="javascript:window.location.href={% url 'signup' %}">Sign up instead.</a></p>
+            </div>
+            <div class="container">
+            <form method="POST"> {% csrf_token %}
+                <label for="username">Username:</label>
+                <input name="username" required type="text" class="form-control" id="username" placeholder="John Doe">
+                <label for="password" style="margin-top:.5cm">Password:</label>
+                <input name="password" minlength="6" required type="password" class="form-control" id="password" placeholder="*******">
+                <button type="submit" style="margin-top:.5cm; width:100%;" class="btn btn-lg btn-block btn-success">Login</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
