@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login',
     'homepage', 
-    'vendingmachine'
+    'vendingmachine',
+    'vendinghandler'
 ]
 
 MIDDLEWARE = [

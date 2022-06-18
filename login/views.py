@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Users
 from cryptography.fernet import Fernet
 
-file = open("encryption.key", "rb")
+file = open("encryption.key", "rb");
 secret = file.read();
 file.close();
 encrpytion = Fernet(secret);

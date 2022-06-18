@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from homepage.views import homepage
 from login.views import signup, logout, login
+from vendinghandler.views import vendingpage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +25,6 @@ urlpatterns = [
     path("",  homepage, name="homepage"),
     path("signup/", signup, name="signup"),
     path("login/", login, name='login'),
-    path("logout/", logout, name="logout")
+    path("logout/", logout, name="logout"),
+    path("vending/", vendingpage, name="vendingpage")
 ]
