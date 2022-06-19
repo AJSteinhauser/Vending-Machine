@@ -9,9 +9,6 @@ def vendingpage(request):
     context['rows'] = getherDrinks();
     return render(request, 'vending.html', context);
 
-
-
-
 def getherDrinks():
     drinkTable = Drinks.objects.all();
     counter = 1;
@@ -29,10 +26,10 @@ def getherDrinks():
             'code' : code
         }
         drinkRow.append(drinkTable);
-        if letter > 4:
+        if letter > 2:
             rows.append(drinkRow);
             drinkRow = [];
-            letter = 1;
+            letter = 0;
             counter += 1;
         else: 
             letter += 1;
