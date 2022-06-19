@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from homepage.views import homepage
 from login.views import signup, logout, login
-from vendinghandler.views import vendingpage
+from vendinghandler.views import vendingpage, purchase
 
 urlpatterns = [
     path('admin/', admin.site.urls),

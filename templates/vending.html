@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Homepage</title>
+    <title>Vending Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style>
       .keypad-button{
@@ -21,7 +21,7 @@
   <body>
     <div hidden id="money">{{request.session.money}}</div>
     {% include 'navbar.html' %}
-    
+    <p hidden id="token">{{ csrf_token }}</p>
     <div class="container">
       {% if request.session.userID %}
       <div class="shadow-lg p-3 mb-5 card rounded jumbotron jusitfy-center" style="width: 100%;">
@@ -35,6 +35,7 @@
                     <div class="col-3">
                       <div class="shadow-sm container p-2 mb-2 card rounded text-center jumbotron jusitfy-center jusitfy-content-center" data-toggle="tooltip" data-placement="bottom" title="{{drink.description}}">
                         <p hidden id="{{ drink.code }}_id">{{ drink.id }}</p>
+                        <p hidden id="{{ drink.code }}_description">{{drink.description}}</p>
                         <h4 class="card-title" id="{{ drink.code }}_title">{{ drink.name }}</h4>
                         <img class="rounded rounded mx-auto d-block" id="{{ drink.code }}_image"src="{% get_static_prefix %}/{{drink.image}}" width="100%" role="img" aria-label="Drink logo"></img>
                         <small class="text-muted mb-1" id="{{ drink.code }}_stock">{{ drink.stock }} in stock</small>
@@ -55,6 +56,7 @@
                   Item Code:
                 </div>
                 <small class="mt-1 mb-2 text-danger" id="error-message"></small>
+                <small class="mt-1 mb-2 text-success" id="success-message"></small>
                 <div class="row mb-4">
                   <!--Keypad 1-->
                   <div class="col-3">
