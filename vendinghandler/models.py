@@ -5,8 +5,7 @@ from pyrsistent import l
 
 
 class Drinks(models.Model):
-    id = models.AutoField(primary_key=True);
-    name = models.CharField(max_length=30);
+    name = models.CharField(max_length=30, primary_key=True);
     description = models.TextField();
     price = models.DecimalField(default=1.00,max_digits=5,decimal_places=2);
     inStock = models.IntegerField(default=50);

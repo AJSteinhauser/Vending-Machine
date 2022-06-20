@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'login',
     'homepage', 
     'vendingmachine',
-    'vendinghandler'
+    'vendinghandler',
+    'api.apps.ApiConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
