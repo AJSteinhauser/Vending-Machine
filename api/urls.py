@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     path('getallstock/',views.getAllStock),
     path('getdrinkstock/<str:drinkname>/',views.getDrinkStock),
-    path('adddrinkstock/<str:drinkname>/',views.addDrinkStock)
+    path('adddrinkstock/<str:drinkname>/',views.addDrinkStock),
+    path('changedrinkprice/<str:drinkname>/',views.changedrinkprice)
 ]

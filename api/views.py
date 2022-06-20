@@ -55,9 +55,36 @@ def addDrinkStock(request,drinkname):
         raise AuthenticationFailed("Password is incorrect");
     
     try:
-        print(drink.maxStock)
         drink.inStock = max(0,min(request.data['amount'] + drink.inStock, drink.maxStock));
     except :
         raise ParseError("Data is malformed")
     drink.save()
     return Response(str(drink.inStock) + " is the new amount");
+
+@api_view(['POST'])
+def changedrinkprice(request,drinkname):
+    drink = None;
+    print(request.data)
+    try:
+        drink = Drinks.objects.get(name = drinkname);
+    except:
+        raise NotFound("Drink: '" + drinkname + "' is not in the database");
+    try:
+        if not 'price' in request.data: 
+            raise;
+        if not 'password' in request.data:
+            raise
+    except :
+        raise ParseError("Data is malformed: missing data")
+    try: 
+        if request.data['password'] != "secretpassword":
+            raise;
+    except: 
+        raise AuthenticationFailed("Password is incorrect");
+    
+    try:
+        drink.price = max(0, request.data['price']);
+    except :
+        raise ParseError("Data is malformed: failed to change price")
+    drink.save()
+    return Response(str(drink.price) + " is the new price");
